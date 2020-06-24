@@ -1,0 +1,32 @@
+{
+  "name": "outbot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "serve": "bash scripts/start_server.sh",
+    "silent_serve": "node dist/index.js",
+    "build": "tsc",
+    "watch": "tsc -w",
+    "cli": "node dist/scripts/cli.js",
+    "lint": "tsc --noEmit && eslint \"**/*.{js,ts}\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "form-data": "^3.0.0",
+    "node-addon-api": "*",
+    "ramda": "^0.26.1"
+  },
+  "devDependencies": {
+    "@types/node": "^12.12.21",
+    "@types/ramda": "^0.26.38",
+    "@typescript-eslint/eslint-plugin": "^2.12.0",
+    "@typescript-eslint/parser": "^2.12.0",
+    "eslint": "^6.7.2",
+    "ts-node": "^8.5.4",
+    "typescript": "^3.7.3"
+  }
+}

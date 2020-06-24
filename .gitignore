@@ -1,0 +1,5 @@
+.idea
+node_modules
+dist/*
+webcam_output.jpg
+out.avi
