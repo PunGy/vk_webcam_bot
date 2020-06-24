@@ -1,10 +1,10 @@
 import { execFile, ExecException } from 'child_process'
 import fs from 'fs'
-import { sendMessage } from './sendMessage'
-import getGlobalConfig from './utils/getGlobalConfig'
+// import { sendMessage } from './sendMessage'
+// import getGlobalConfig from './utils/getGlobalConfig'
 import { NewMessageObject } from './types/api'
 
-const config = getGlobalConfig()
+// const config = getGlobalConfig()
 /*
 const bussyNotify = (userId: number): void => {
   sendMessage(config, {
@@ -33,8 +33,8 @@ const useDevice = async (execPath: string, resultPath: string, params: any[]): P
 )
 const useWebcam = async (type: 'photo'|'video', messageObject: NewMessageObject, ...params: any[]): Promise<Buffer> => {
   const execPath = type === 'photo'
-    ? './module/webcam_capture/sources/webcam_capture'
-    : './module/webcam_capture/sources/webcam_video'
+    ? './module/webcam_capture/webcam_capture'
+    : './module/webcam_capture/webcam_video'
   const resultPath = type === 'photo'
     ? 'webcam_output.jpg'
     : 'out.avi'
