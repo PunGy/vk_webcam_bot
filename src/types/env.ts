@@ -3,11 +3,11 @@ import { KeyboardTypes } from '../getKeyboard'
 export interface EnvConfig {
   API_URL: string;
   SECRET_KEY: string;
-  MAX_SECRET_KEY: string;
+  HOST_SECRET_KEY: string;
   API_VERSION: string;
   GROUP_ID: number;
-  ELENA_ID: number;
-  MAXIM_ID: number;
+  RECIVER_ID: number;
+  HOST_ID: number;
   MODE: 'production'|'development';
 }
 
@@ -17,6 +17,6 @@ export interface UserState {
 export interface GlobalConfig {
   env: EnvConfig;
   mode: 'production'|'development';
-  maximState: UserState;
-  elenaState: UserState;
+  hostState: UserState;
+  reciverState: UserState;
 }

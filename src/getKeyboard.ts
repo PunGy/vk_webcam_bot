@@ -1,7 +1,7 @@
 import { EnvConfig } from './types/env'
 import * as R from 'ramda'
 
-export type KeyboardTypes = 'default'|'maximDefault'|'maximInteraction'|'videoRecord'
+export type KeyboardTypes = 'default'|'hostDefault'|'hostInteraction'|'videoRecord'
 export interface Keyboard {
   one_time: boolean;
   buttons: Array<
@@ -48,8 +48,8 @@ const defaultKeyboard: Keyboard = {
   ],
 }
 
-const maximDefaultKeyboard: Keyboard = R.clone(defaultKeyboard)
-maximDefaultKeyboard.buttons.push(...[
+const hostDefaultKeyboard: Keyboard = R.clone(defaultKeyboard)
+hostDefaultKeyboard.buttons.push(...[
   [{
     action: {
       type: 'text',
@@ -70,7 +70,7 @@ maximDefaultKeyboard.buttons.push(...[
     {
       action: {
         type: 'text',
-        payload: '{"button": "maxReturn"}',
+        payload: '{"button": "hostReturn"}',
         label: 'Вернулся',
       },
       color: 'secondary',
@@ -78,7 +78,7 @@ maximDefaultKeyboard.buttons.push(...[
   ],
 ])
 
-const maximInteractionKeyboard: Keyboard = {
+const hostInteractionKeyboard: Keyboard = {
   one_time: false,
   buttons: [
     [
@@ -203,11 +203,11 @@ const getKeyboard = (env?: EnvConfig, config?: {
 }): Keyboard => {
   if (config && env) {
     const { type, userId } = config
-    const { MAXIM_ID } = env
+    const { HOST_ID } = env
 
     if (type === 'videoRecord') return videoRecordKeyboard
-    if (type === 'maximInteraction' && isHasAccess(userId, +MAXIM_ID)) return maximInteractionKeyboard
-    if (isHasAccess(userId, +MAXIM_ID)) return maximDefaultKeyboard
+    if (type === 'hostInteraction' && isHasAccess(userId, +HOST_ID)) return hostInteractionKeyboard
+    if (isHasAccess(userId, +HOST_ID)) return hostDefaultKeyboard
   }
   return defaultKeyboard
 }

@@ -9,7 +9,7 @@ export interface RequestConfig {
   headers?: object;
   httpMethod?: 'POST' | 'GET';
   server?: string;
-  keyType?: 'max'|'group';
+  keyType?: 'host'|'group';
 }
 
 export interface GetServerResponse {

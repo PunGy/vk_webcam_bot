@@ -43,7 +43,7 @@ const bot = async (config: GlobalConfig): Promise<void> => {
   if (config.env.MODE === 'production') {
     await sendMessage(config, {
       message: 'Я включился! Можешь мне что-нибудь написать :)',
-      userId: config.env.ELENA_ID,
+      userId: config.env.RECIVER_ID,
     })
   }
 
@@ -72,7 +72,7 @@ const bot = async (config: GlobalConfig): Promise<void> => {
             .then(responseStatus => {
               const fromId = !isNil(update.object.message) && !isNil(update.object.message.from_id)
                 ? update.object.message.from_id
-                : config.env.MAXIM_ID
+                : config.env.HOST_ID
 
               if (responseStatus === 1) {
                 sendMessage(config, {

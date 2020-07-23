@@ -5,7 +5,7 @@ import responsePhoto from './responseGetPhoto'
 import { NewMessageObject } from '../types/api'
 import { KeyboardTypes } from '../getKeyboard'
 
-const baseElenaSender = async (
+const baseSender = async (
   config: GlobalConfig,
   messageConfig: {
     message: string;
@@ -24,16 +24,16 @@ const baseElenaSender = async (
 
     await sendMessage(config, {
       message,
-      userId: config.env.ELENA_ID,
+      userId: config.env.RECIVER_ID,
     })
 
-    messageObject.message.from_id = config.env.ELENA_ID
+    messageObject.message.from_id = config.env.RECIVER_ID
     if (withPhoto) await responsePhoto(config)(messageObject)
 
     await sendMessage(config, {
       message: 'Отправил!',
-      userId: config.env.MAXIM_ID,
-      keyboardType: keyboardType || 'maximInteraction',
+      userId: config.env.HOST_ID,
+      keyboardType: keyboardType || 'hostInteraction',
     })
   } catch (e) {
     console.log(e)
@@ -42,62 +42,61 @@ const baseElenaSender = async (
   return 0
 }
 
-export const maxDinnerResponse = (config: GlobalConfig) => (
+export const hostDinnerResponse = (config: GlobalConfig) => (
   async (messageObject: NewMessageObject): Promise<responseStatus> => (
-    baseElenaSender(
+    baseSender(
       config,
       {
-        message: 'Максимка вышел кушать, придёт примерное в ' + new Date(Date.now() + 1800000).toLocaleTimeString()
-        + '. Вот тебе его фоточка, дабы ожидание не было столь томным!',
+        message: 'Ушел на обед, вернусь через ' + new Date(Date.now() + 1800000).toLocaleTimeString()
+        + '. Подкрепляю фото',
         messageObject,
         withPhoto: true,
       },
     )
   )
 )
-export const maxLittleLeaveResponse = (config: GlobalConfig) => (
+export const hostLittleLeaveResponse = (config: GlobalConfig) => (
   async (messageObject: NewMessageObject): Promise<responseStatus> => (
-    baseElenaSender(
+    baseSender(
       config,
       {
-        message: 'Максимка отошел ненадолго, скоро вернётся)',
+        message: 'Отошёл ненадолго',
         messageObject,
         keyboardType: 'default',
       },
     )
   )
 )
-export const maxReturnResponse = (config: GlobalConfig) => (
+export const hostReturnResponse = (config: GlobalConfig) => (
   async (messageObject: NewMessageObject): Promise<responseStatus> => (
-    baseElenaSender(
+    baseSender(
       config,
       {
-        message: 'О, Максимка вернулся!',
+        message: 'Вернулся!',
         messageObject,
         keyboardType: 'default',
       },
     )
   )
 )
-export const maxGoHomeResponse = (config: GlobalConfig) => (
+export const hostGoHomeResponse = (config: GlobalConfig) => (
   async (messageObject: NewMessageObject): Promise<responseStatus> => (
-    baseElenaSender(
+    baseSender(
       config,
       {
-        message: 'Максимка собрался домой! Скорее всего я больше не смогу тебе отвечать( '
-        + 'Вот тебе его личико, оно скоро будет на пороге дома!',
+        message: 'Ушел домой!',
         messageObject,
         withPhoto: true,
       },
     )
   )
 )
-export const maxSendPhotoResponse = (config: GlobalConfig) => (
+export const hostSendPhotoResponse = (config: GlobalConfig) => (
   async (messageObject: NewMessageObject): Promise<responseStatus> => (
-    baseElenaSender(
+    baseSender(
       config,
       {
-        message: 'Максимка хочет чтобы ты это увидела! Только посмотри на это!!!',
+        message: 'Фото от отправителя!',
         messageObject,
         withPhoto: true,
       },

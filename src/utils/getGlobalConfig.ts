@@ -9,8 +9,8 @@ const getGlobalConfig = (): GlobalConfig => {
   }
   const env: EnvConfig = dotenv.config().parsed as unknown as EnvConfig
   env.GROUP_ID = +env.GROUP_ID
-  env.ELENA_ID = +env.ELENA_ID
-  env.MAXIM_ID = +env.MAXIM_ID
+  env.RECIVER_ID = +env.RECIVER_ID
+  env.HOST_ID = +env.HOST_ID
 
   let mode: 'production'|'development' = env.MODE
   if (process.argv[1] === '-d') {
@@ -20,10 +20,10 @@ const getGlobalConfig = (): GlobalConfig => {
   const config: GlobalConfig = {
     env,
     mode,
-    maximState: {
-      keyboard: 'maximDefault',
+    hostState: {
+      keyboard: 'hostDefault',
     },
-    elenaState: {
+    reciverState: {
       keyboard: 'default',
     },
   }

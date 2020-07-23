@@ -13,7 +13,7 @@ const bussyNotify = (userId: number): void => {
   })
 }
 */
-const waitFor = (milisec: number): Promise<boolean> => (
+const sleep = (milisec: number): Promise<boolean> => (
   new Promise(res => setTimeout(() => res(true), milisec))
 )
 const useDevice = async (execPath: string, resultPath: string, params: any[]): Promise<Buffer|null> => (
@@ -41,20 +41,17 @@ const useWebcam = async (type: 'photo'|'video', messageObject: NewMessageObject,
   let isBussy = false
   let file: Buffer
 
-  // eslint-disable-next-line no-constant-condition
-  while (true) {
+  do {
     const result = await useDevice(execPath, resultPath, params)
     if (result == null) {
-      if (!isBussy) {
-        // bussyNotify(messageObject.message.from_id)
-        isBussy = true
-      }
-      await waitFor(1000)
-    } else {
-      file = result
-      break
+      if (!isBussy) isBussy = true
+      await sleep(1000)
+      continue
     }
-  }
+
+    isBussy = false
+    file = result
+  } while (isBussy)
 
   return file
 }

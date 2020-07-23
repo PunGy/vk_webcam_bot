@@ -10,7 +10,7 @@ const callApi = (envConfig: EnvConfig, requestConfig: RequestConfig): Promise<st
       hostname: requestConfig.server || envConfig.API_URL,
       path: (
         requestConfig.apiMethod
-        + `?access_token=${requestConfig.keyType === 'max' ? envConfig.MAX_SECRET_KEY : envConfig.SECRET_KEY}`
+        + `?access_token=${requestConfig.keyType === 'host' ? envConfig.HOST_SECRET_KEY : envConfig.SECRET_KEY}`
         + `&v=${envConfig.API_VERSION}`
         + (requestConfig.params ? `&${requestConfig.params}` : '')
       ),

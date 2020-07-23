@@ -5,6 +5,6 @@ export const getSenderState = (config: GlobalConfig, sender: NewMessageObject | 
   const fromId = typeof sender === 'number'
     ? sender
     : sender.message.from_id
-  if (fromId === config.env.MAXIM_ID) return config.maximState
-  return config.elenaState
+  if (fromId === config.env.HOST_ID) return config.hostState
+  return config.reciverState
 }

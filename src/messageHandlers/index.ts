@@ -3,14 +3,14 @@ import * as R from 'ramda'
 import responsePhoto from './responseGetPhoto'
 import { responseInfo, responseUnknownCommand } from './trivialResponses'
 import {
-  maxDinnerResponse,
-  maxLittleLeaveResponse,
-  maxSendPhotoResponse,
-  maxReturnResponse,
-  maxGoHomeResponse,
-} from './maximResponses'
+  hostDinnerResponse,
+  hostLittleLeaveResponse,
+  hostSendPhotoResponse,
+  hostReturnResponse,
+  hostGoHomeResponse,
+} from './hostResponses'
 import {
-  responseMaximInteractionKeyboard,
+  responseHostInteractionKeyboard,
   responseDefaultKeyboard,
   responseVideoRecordKeyboard,
  } from './keyboardResponses'
@@ -54,12 +54,12 @@ export default (config: GlobalConfig) => (
       return R.and(R.test(/^\d*$/g, text), getSenderState(config, object).keyboard === 'videoRecord')
     }), responseVideo(config)],
 
-    [testOnText(R.equals('Взаимодействия с Леной'), config.env.MAXIM_ID), responseMaximInteractionKeyboard(config)],
-    [testOnText(R.equals('Не на долго'), config.env.MAXIM_ID), maxLittleLeaveResponse(config)],
-    [testOnText(R.equals('Вернулся'), config.env.MAXIM_ID), maxReturnResponse(config)],
-    [testOnText(R.equals('Обед'), config.env.MAXIM_ID), maxDinnerResponse(config)],
-    [testOnText(R.equals('Показать себя'), config.env.MAXIM_ID), maxSendPhotoResponse(config)],
-    [testOnText(R.equals('Ушел домой'), config.env.MAXIM_ID), maxGoHomeResponse(config)],
+    [testOnText(R.equals('Взаимодействия с Леной'), config.env.HOST_ID), responseHostInteractionKeyboard(config)],
+    [testOnText(R.equals('Не на долго'), config.env.HOST_ID), hostLittleLeaveResponse(config)],
+    [testOnText(R.equals('Вернулся'), config.env.HOST_ID), hostReturnResponse(config)],
+    [testOnText(R.equals('Обед'), config.env.HOST_ID), hostDinnerResponse(config)],
+    [testOnText(R.equals('Показать себя'), config.env.HOST_ID), hostSendPhotoResponse(config)],
+    [testOnText(R.equals('Ушел домой'), config.env.HOST_ID), hostGoHomeResponse(config)],
 
     [R.T, responseUnknownCommand(config)],
   ])

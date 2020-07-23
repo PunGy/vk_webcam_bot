@@ -22,13 +22,13 @@ const rl = readline.createInterface({
 const littleLeave = () => (
   sendMessage(config, {
     message: 'Максимка отошел ненадолго, скоро вернётся)',
-    userId: config.env.ELENA_ID,
+    userId: config.env.RECIVER_ID,
   })
 )
-const maxReturn = () => (
+const hostReturn = () => (
   sendMessage(config, {
     message: 'О, Максимка вернулся!',
-    userId: config.env.ELENA_ID,
+    userId: config.env.RECIVER_ID,
   })
 )
 console.clear()
@@ -42,7 +42,7 @@ rl.on('line', async (line) => {
         console.log('sended!')
         break
       case 'r':
-        await maxReturn()
+        await hostReturn()
         console.log('sended!')
         break
       case 'help':

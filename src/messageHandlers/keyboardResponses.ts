@@ -3,13 +3,13 @@ import { responseStatus } from '../types/state'
 import { sendMessage } from '../sendMessage'
 import { NewMessageObject } from '../types/api'
 
-export const responseMaximInteractionKeyboard = (config: GlobalConfig) => (
+export const responseHostInteractionKeyboard = (config: GlobalConfig) => (
   async (): Promise<responseStatus> => {
     try {
       sendMessage(config, {
-        userId: config.env.MAXIM_ID,
+        userId: config.env.HOST_ID,
         message: 'Пожалуйста',
-        keyboardType: 'maximInteraction',
+        keyboardType: 'hostInteraction',
       })
     } catch (e) {
       console.log(e)
