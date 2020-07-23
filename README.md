@@ -1,5 +1,6 @@
 # outbot
-This is VK bot for sending messages and webcam capture and video. It's used by two people, and 
+This is VK bot for sending messages and webcam capture and video. It's used by two people, `host` run this app on the computer, and `reciver` send requests
+via bot and recieve results
 
 ## How to build
 
@@ -10,6 +11,7 @@ For building typescript just type **yarn build** or **yarn watch**
 
 ### C++
 Go to *project_root/module/webcam_capture/* and run **make capture** for webcam screenshot, and **make video** for webcam video recording(**this requires opencv library!**)
+#### Recieving webcam screenshot works only on linux
 
 ## How to run
 First of all, bot will not work without real variables in .env
