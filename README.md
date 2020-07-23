@@ -18,10 +18,10 @@ This bot used longpoll API, so you may try to setup https://vk.com/dev/bots_long
 
 Variables for working example:
 * **GROUP_ID** - id of chat bot group
-* **ELENA_ID** - Reciever id
-* **MAXIM_ID** - Sender id (who run chatbot with webcam)
+* **RECIVER_ID** - Reciever id
+* **HOST_ID** - Sender id (who run chatbot with webcam)
 * **SECRET_KEY** - Group secret key
-* **MAX_SECRET_KEY** - Sender secret key (This is necessary to save the photo before sending)
+* **HOST_SECRET_KEY** - Sender secret key (This is necessary to save the photo before sending)
 
 After setup:
 
