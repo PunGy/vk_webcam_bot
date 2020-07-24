@@ -3,8 +3,9 @@ import fs from 'fs'
 import { sendMessage } from './sendMessage'
 import getGlobalConfig from './utils/getGlobalConfig'
 import { NewMessageObject } from './types/api'
-const config = getGlobalConfig()
+
 const bussyNotify = (userId: number): void => {
+  const config = getGlobalConfig()
   sendMessage(config, {
     message: 'Камера сейчас занята. Вы встали в очередь, скоро получите изображение)',
     userId,
