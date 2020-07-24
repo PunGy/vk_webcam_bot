@@ -11,7 +11,7 @@ export const getResponseMessageVideo = async (
   env: EnvConfig,
   messageObject: NewMessageObject,
 ): Promise<NewMessageConfig> => {
-  const video = await useWebcam('video', messageObject, messageObject.message.text)
+  const video = await useWebcam('video', messageObject, [messageObject.message.text])
   const { response: responseVideoSave } = await callApi(env, {
     apiMethod: '/method/video.save',
     params: `name=host.avi&group_id=${env.GROUP_ID}`,
