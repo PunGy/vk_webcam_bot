@@ -14,15 +14,14 @@ export const getResponseMessageVideo = async (
   const video = await useWebcam('video', messageObject, [messageObject.message.text])
   const { response: responseVideoSave } = await callApi(env, {
     apiMethod: '/method/video.save',
-    params: `name=host.avi&group_id=${env.GROUP_ID}`,
+    params: `name=webcam_video.avi&group_id=${env.GROUP_ID}`,
     httpMethod: 'GET',
     keyType: 'host',
   }).then(JSON.parse)
-  console.log(responseVideoSave)
 
   const videoForm = new FormData()
   videoForm.append('video_file', video, {
-    filename: 'host.avi',
+    filename: 'webcam_video.avi',
     contentType: 'video/x-msvideo',
   })
 
