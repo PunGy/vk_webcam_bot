@@ -3,3 +3,7 @@ node_modules
 dist/*
 webcam_output.jpg
 out.avi
+.env
+
+module/webcam_capture/webcam_capture
+module/webcam_capture/webcam_video

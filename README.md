@@ -30,3 +30,18 @@ After setup:
 * **yarn serve** - start bot
 * **yarn silent_serve** - start bot without notice to the reciever
 * **yarn cli** - start cli, which used for sending some responses to sender without using bot
+
+## ENV file
+For working, it also should have the .env file
+
+The example is:
+```
+API_URL=api.vk.com
+SECRET_KEY=111 # group secret key
+HOST_SECRET_KEY=111 # secret key of host. Required for saving video
+API_VERSION=5.103 # Vk api version
+GROUP_ID=111 # id of vk group where bot is locating
+RECIVER_ID=111 # vk id of reciever
+HOST_ID=111 # vk id of host
+MODE=production # could be development or production
+```

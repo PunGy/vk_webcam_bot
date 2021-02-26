@@ -39,7 +39,6 @@ export const getResponseMessageVideo = async (
       })
     })
   }).then(JSON.parse)
-  console.log(videoInfo)
 
   return ({
     attachment: `video${responseVideoSave.owner_id}_${videoInfo.video_id}_${responseVideoSave.access_key}`,

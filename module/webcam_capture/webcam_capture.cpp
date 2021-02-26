@@ -6,7 +6,7 @@ using namespace std;
 using namespace cv;
 
 int main(int argc, char **argv) {
-    VideoCapture vcap(0);
+    VideoCapture vcap("/dev/video0");
 
     vcap.set(CAP_PROP_FRAME_WIDTH, 1920);
     vcap.set(CAP_PROP_FRAME_HEIGHT, 1080);
